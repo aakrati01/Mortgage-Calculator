@@ -1,0 +1,55 @@
+
+<div class="container" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%); padding: 0px;"> 
+    <div class="calculator-title">Mortgage Calculator</div>
+    <div class="row" style="justify-content: center; padding: 24px;">
+        <div class="col col-md-8" style="overflow-y: scroll; max-height: 100vh">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 d-flex flex-row" >
+                <label for="mortgageAmount" class="form-label w-50 h-25">Mortgage Amount</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="mortgageAmount"
+                    formControlName="mortgageAmount"
+                />
+            </div>
+            <div class="mb-3 d-flex flex-row">
+                <label for="interestRate" class="form-label w-50 h-25">Interest Rate</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="interestRate"
+                    formControlName="interestRate"
+                />
+            </div>
+            <div class="mb-3 d-flex flex-row">
+                <mat-label class="w-50 h-25">Amortization Period </mat-label>
+                <mat-select id="period" class="form-control"
+                formControlName="period" required >
+                    <mat-option *ngFor="let item of period" [value]="item.value">
+                        {{item.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div class="mb-3 d-flex flex-row">
+                <mat-label class="w-50 h-25">Payment Frequency </mat-label>
+                <mat-select id="frequency" class="form-control"
+                formControlName="frequency" required >
+                    <mat-option *ngFor="let item of frequency" [value]="item.value">
+                        {{item.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div class="col text-center">
+                <button type="submit" style="margin-top: 20px;" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<div >
+    <app-summary [principalAmt]="mAmt" [numberOfPayments] ="numberOfPayments"
+    [mortgageAmt]="ratePaymentObj?.periodicPayment" [interest]="interest"
+    [sumInterestPayment]="sumInterestPayment" [completeObj]="completeObj"></app-summary>
+</div>

@@ -1,0 +1,39 @@
+<!-- <p>summary works!</p> -->
+<div class="container" style="padding: 0px;margin-top: 24px">
+    <div class="calculation-title">Calculation Summary</div>
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col category">Category</div>
+            
+            <div class="col category">Amortization Period</div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row align-items-start p-3 border-table " >
+            <div class="col">Number of Payments</div>
+            <div class="col">{{numberOfPayments ? numberOfPayments : 0}}</div>
+        </div>
+        <div class="row align-items-start p-3 border-table">
+            <div class="col">Mortgage Payments</div>
+            <div class="col"> $ {{mortgageAmt ? mortgageAmt : '0.00'}}</div>
+        </div>
+        <div class="row align-items-start p-3 border-table">
+            <div class="col">Prepayment</div>
+            <div class="col"> $ 0.00</div>
+        </div>
+        <div class="row align-items-start p-3 border-table ">
+            <div class="col">Principal Payment</div>
+            <div class="col"> $ {{principalAmt ? principalAmt : '0.00'}}</div>
+        </div>
+        <div class="row align-items-start p-3 border-table ">
+            <div class="col"> Interest Payments</div>
+            <div class="col"> $ {{sumInterestPayment ? sumInterestPayment : '0.00'}}</div>
+        </div>
+    </div>
+</div>
+<div  class="container" style="padding: 0px;margin-top: 60px">
+    <div class="calculation-title">Graph depicting payment history</div>
+    <!-- <div style="margin-top: 14px;
+    font-size: 14px;"> ** Calculation for acceleratedBiWeekly and acceleratedWeekly only for number of payments formula is not correct </div> -->
+    <div [chart]="highchart"></div>
+</div>
